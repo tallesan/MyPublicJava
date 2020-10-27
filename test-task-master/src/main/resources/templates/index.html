@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+  Сегодня, <span th:text="${date}"></span>
+</div>
+
+<div class="container my-2">
+  <br>
+  <h1>Список автомобилей(<span th:text="${carsCount}">0</span>)</h1>
+  <a th:href="@{/new_item}" class="btn btn-primary btn-sm mb-3">Добавить автомобиль</a>
+  <a th:href="@{/airindex}" class="btn btn-danger btn-sm mb-3">Добавить самолет</a>
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Бренд</th>
+      <th>Модель</th>
+      <th>Двигатель</th>
+      <th>Год
+          выпуска</th>
+      <th>Стоимость</th>
+      <th>Оценка</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cars : ${cars}">
+      <td th:text="${cars.getId()}"></td>
+      <td th:text="${cars.getBrand()}"></td>
+      <td th:text="${cars.getModel()}"></td>
+      <td th:text="${cars.getPower()}"></td>
+      <td th:text="${cars.getYear()}"></td>
+      <td th:text="${cars.getValue()}"></td>
+      <td><a th:href="@{/ratings/{id}(id=${cars.Id})}" class="btn btn-danger">Оценка</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

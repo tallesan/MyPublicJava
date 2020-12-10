@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    .validationError {
+    color: red}
+
+  </style>
+</head>
+<body>
+<div class="container">
+    <h1 align="center">Редактирование пользователя</h1>
+    <hr>
+    <form action="#" th:action="@{/updateUserItem/{id}(id=${userItem.Id})}" th:object="${userItem}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" readonly th:field="*{regDate}" placeholder="Input title" class="form-control mb-4 col-4">
+        <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        <input type="text" th:field="*{name}" placeholder="Input title" class="form-control mb-4 col-4">
+        <select class="form-control mb-4 col-4" th:field="*{position}" id="active">
+            <option  th:each="pos : ${listPos}"
+                     th:value="${pos}"
+                     th:text="${pos.getPos()}"></option>
+        </select>
+<!--        <span class="validationError" th:if="${#fields.hasErrors('position')}"-->
+<!--              th:errors="*{position}"></span>-->
+<!--        <input type="text" th:field="*{position}" placeholder="Input title" class="form-control mb-4 col-4">-->
+
+        <span class="validationError" th:if="${#fields.hasErrors('position')}"
+              th:errors="*{email}"></span>
+        <input type="text" th:field="*{email}" placeholder="Input title" class="form-control mb-4 col-4">
+        <span class="validationError" th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"></span>
+        <input type="text" th:field="*{password}" placeholder="Input title" class="form-control mb-4 col-4">
+        <span class="validationError" th:if="${#fields.hasErrors('phone')}"
+              th:errors="*{phone}"></span>
+        <input type="text" th:field="*{phone}" placeholder="Input title" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Item</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/index}"> Back to List</a>
+</div>
+</body>
+</html>

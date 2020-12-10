@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container my-2">
+  <br>
+  <h1>Список пользователей(<span th:text="${usersCount}">0</span>)</h1>
+  <a th:href="@{/showAddItemForm}" class="btn btn-primary btn-sm mb-3">Добавить запись</a>
+  <a th:href="@{/deleteAll}" class="btn btn-danger btn-sm mb-3">Удалить все записи </a>
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Дата регистрации</th>
+      <th>ФИО</th>
+      <th>Должность</th>
+      <th>Почта</th>
+      <th>Пароль</th>
+      <th>Телефон</th>
+      <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="users : ${usersInfoAll}">
+      <td th:text="${users.getId()}"></td>
+      <td th:text="${users.getRegDate()}"></td>
+      <td th:text="${users.getName()}"></td>
+      <td th:text="${users.getPosition().getPos()}"></td>
+      <td th:text="${users.getEmail()}"></td>
+<!--      <td th:text="${users.getPassword()}"></td>-->
+      <td>********</td>
+      <td th:text="${users.getPhone()}"></td>
+      <td><a th:href="@{/deleteUserItem/{id}(id=${users.Id})}" class="btn btn-danger">Удалить</a>
+      <a th:href="@{/updateUserItem/{id}(id=${users.Id})}" class="btn btn-info">Редактировать</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

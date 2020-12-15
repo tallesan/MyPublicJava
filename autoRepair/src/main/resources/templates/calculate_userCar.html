@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Item</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1 align="center"> Формирование чека НУЖНО ДОДЕЛАТЬ </h1>
+  <hr>
+  <form action="#" th:action="@{/calculateUserCar/{id}(id=${userCar.Id})}" th:object="${userCar}"
+        method="POST">
+    <input type="hidden" th:field="*{id}"/>
+    <input type="text" readonly th:field="*{color}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="colorPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{model}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="modelPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{typeCar}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="typeCarPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{conditioner}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="conditionerPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{doorNum}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="doorNumPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{upholstery}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="upholsteryPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{power}" class="form-control mb-4 col-4">
+    <select class="form-control mb-4 col-1" id="powerPrice">
+      <option value="0">0</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+    </select>
+    <input type="text" readonly th:field="*{year}" class="form-control mb-4 col-4">
+
+    <button type="submit" class="btn btn-info col-2"> Рассчитать</button>
+  </form>
+
+  <hr>
+  <a th:href="@{/addCar}"> Вернуться к списку </a>
+</div>
+</body>
+</html>

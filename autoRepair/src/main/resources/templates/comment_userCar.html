@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container my-2">
+  <br>
+  <h1>Комплектация автомобиля</h1>
+  <table border="1" class="table table-striped table-responsive-xl">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Цвет</th>
+      <th>Модель</th>
+      <th>Тип авто</th>
+      <th>Кондиционер</th>
+      <th>Количество дверей</th>
+      <th>Обивка салона</th>
+      <th>Мощность</th>
+      <th>Год</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car : ${userCar}">
+      <td th:text="${car.getId()}"></td>
+      <td th:text="${car.getColor()}"></td>
+      <td th:text="${car.getModel()}"></td>
+      <td th:text="${car.getTypeCar()}"></td>
+      <td th:text="${car.getConditioner()}"></td>
+      <td th:text="${car.getDoorNum()}"></td>
+      <td th:text="${car.getUpholstery()}"></td>
+      <td th:text="${car.getPower()}"></td>
+      <td th:text="${car.getYear()}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <form action="#" th:action="@{/commentUserCar/{id}(id=${userCar.Id})}" th:object="${userQuest}" method="POST">
+  <textarea name="userQ" rows="5" cols="50" th:field="${userQuest.userQuestion}"></textarea>
+    <textarea type="text" readonly name="operatorQ" rows="5" cols="50" th:field="${userQuest.operatorResponse}"></textarea>
+      <br>
+  <button type="submit" class="btn btn-info col-2">Добавить комментарий</button>
+    </form>
+  <br>
+  <a th:href="@{/index}"> назад </a>
+</div>
+</body>
+</html>

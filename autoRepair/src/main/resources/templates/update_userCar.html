@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Item</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1 align="center">Редактирование автомобиля</h1>
+  <hr>
+  <form action="#" th:action="@{/updateUserCar/{id}(id=${userCar.Id})}" th:object="${userCar}"
+        method="POST">
+    <input type="hidden" th:field="*{id}"/>
+    <select class="form-control mb-4 col-4" th:field="*{color}" id="color">
+      <option value="Не выбран"></option>
+      <option th:each="color : ${userModel.getColor()}"
+              th:value="${color}"
+              th:text="${color}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{model}" id="model">
+      <option value="Не выбран"></option>
+      <option th:each="model : ${userModel.getModel()}"
+              th:value="${model}"
+              th:text="${model}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{typeCar}" id="typeCar">
+      <option value="Не выбран"></option>
+      <option th:each="typeCar : ${userModel.getTypeCar()}"
+              th:value="${typeCar}"
+              th:text="${typeCar}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{conditioner}" id="conditioner">
+      <option value="Не выбран"></option>
+      <option th:each="conditioner : ${userModel.getConditioner()}"
+              th:value="${conditioner}"
+              th:text="${conditioner}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{doorNum}" id="doorNum">
+      <option value="Не выбран"></option>
+      <option th:each="doorNum : ${userModel.getDoorNum()}"
+              th:value="${doorNum}"
+              th:text="${doorNum}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{upholstery}" id="upholstery">
+      <option value="Не выбран"></option>
+      <option th:each="upholstery : ${userModel.getUpholstery()}"
+              th:value="${upholstery}"
+              th:text="${upholstery}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{power}" id="power">
+      <option value="1"></option>
+      <option th:each="power : ${userModel.getPower()}"
+              th:value="${power}"
+              th:text="${power}"></option>
+    </select>
+    <select class="form-control mb-4 col-4" th:field="*{year}" id="year">
+      <option value="1886"></option>
+      <option th:each="year : ${userModel.getYear()}"
+              th:value="${year}"
+              th:text="${year}"></option>
+    </select>
+    <button type="submit" class="btn btn-info col-2"> Внести изменения</button>
+  </form>
+
+  <hr>
+  <a th:href="@{/addUserCar}"> Вернуться к списку </a>
+</div>
+</body>
+</html>

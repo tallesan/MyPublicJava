@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Item</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1 align="center">Редактирование автомобиля</h1>
+  <hr>
+  <form action="#" th:action="@{/updateCarItem/{id}(id=${carItem.Id})}" th:object="${carItem}" method="POST">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{color}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{model}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{typeCar}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{conditioner}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{doorNum}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{upholstery}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{power}" placeholder="Input title" class="form-control mb-4 col-4">
+    <input type="text" th:field="*{year}" placeholder="Input title" class="form-control mb-4 col-4">
+
+    <button type="submit" class="btn btn-info col-2"> Внести изменения </button>
+  </form>
+
+  <hr>
+  <a th:href="@{/addCar}"> Вернуться к списку </a>
+</div>
+</body>
+</html>

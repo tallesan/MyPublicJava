@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container my-2">
+  <br>
+  <h1>Список найденных продуктов(<span th:text="${products.size()}">0</span>)</h1>
+
+  <input type="search" class="form-control mb-4 col-12" readonly th:if="${searchFalse} == false" placeholder="Ничего не найдено" >
+  <br>
+
+  <table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Продукт</th>
+      <th>Краткое описание</th>
+      <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+      <td th:text="${product.getId()}"></td>
+      <td th:text="${product.getName()}"></td>
+      <td th:text="${product.getSmallText()}"></td>
+      <td><a th:href="@{/deleteProduct/{id}(id=${product.Id})}" class="btn btn-outline-danger mb-1">Удалить</a>
+        <a th:href="@{/updateProduct/{id}(id=${product.Id})}" class="btn btn-outline-info mb-1">Редактировать</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/index}"> назад </a>
+</div>
+</body>
+</html>

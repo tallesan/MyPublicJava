@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+<div class="container my-2" th:if="${searchFalse} == false">
+  <H2>Наша валюта ползет вверх</H2>
+    <img th:src="${img}">
+</div>
+<div class="container my-3" th:if="${searchFalse} == true">
+  <H2>Наша валюта ползет вниз</H2>
+  <img th:src="${img}">
+  <br>
+
+</div>
+<br>
+<a th:href="@{/index}"> назад </a>
+</body>
+</html>
